@@ -3,15 +3,19 @@
 void swap(int origin[], int destiny[], int *sizeOrigin, int *sizeDestiny);
 void hanoiTower(int origin[], int helper[], int destiny[], int *sizeOrigin, int *sizeHelper, int *sizeDestiny, int deepLevel);
 void printArrays(int origin[], int helper[], int destiny[]);
+void init(int origin[], int helper[], int destiny[]);
 
 // Global size value of towers
 const int SIZE = 8;
 
 int main() {
     // Declaring towers as arrays
-    int origin[]  = {8, 7, 6, 5, 4, 3, 2, 1};
-    int helper[]  = {0, 0, 0, 0, 0, 0, 0, 0};
-    int destiny[] = {0, 0, 0, 0, 0, 0, 0, 0};
+    int origin[SIZE];
+    int helper[SIZE];
+    int destiny[SIZE];
+
+    //Start to initiate all the towers
+    init(origin, helper, destiny);
 
     // Declaring size of the towers
     int sizeOrigin  = SIZE;
@@ -87,3 +91,16 @@ void printArrays(int origin[], int helper[], int destiny[]) {
     printf("\n");
     printf("\n");
 }
+
+/*
+ * Function to initiate towers values
+ */
+void init(int origin[], int helper[], int destiny[]) {
+    int i = 0;
+    for (i = 0; i <= SIZE; i++) {
+        origin[i]  = i + 1;
+        helper[i]  = 0;
+        destiny[i] = 0;
+    }
+}
+
