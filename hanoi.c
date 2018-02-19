@@ -6,14 +6,14 @@ void printArrays(int origin[], int helper[], int destiny[]);
 void init(int origin[], int helper[], int destiny[]);
 
 // Global size value of towers
-const int SIZE = 8;
+const int SIZE = 5;
+
 
 int main() {
     // Declaring towers as arrays
     int origin[SIZE];
     int helper[SIZE];
     int destiny[SIZE];
-
     //Start to initiate all the towers
     init(origin, helper, destiny);
 
@@ -21,9 +21,12 @@ int main() {
     int sizeOrigin  = SIZE;
     int sizeHelper  = 0;
     int sizeDestiny = 0;
+    int x=0;
+    int y =0;
 
     // Call hanoiTower Algorithm to send the values from tower 1 to tower 3
     hanoiTower(origin, helper, destiny, &sizeOrigin, &sizeHelper, &sizeDestiny, SIZE - 1);
+
     return 0;
 }
 
@@ -34,20 +37,19 @@ void hanoiTower(int origin[], int helper[], int destiny[], int *sizeOrigin, int 
 
     // We check if we are on deepLvl 0 to make a swap and return, else we continue to go to outer levels
     if (deepLevel == 0) {
+
         // Swap values from the towers and return
         swap(origin, destiny, sizeOrigin, sizeDestiny);
         printArrays(origin, helper, destiny);
         return;
     } else {
         hanoiTower(origin, destiny, helper, sizeOrigin, sizeDestiny, sizeHelper, deepLevel - 1);
-    }
 
-    // We swap values from the towers
-    swap(origin, destiny, sizeOrigin, sizeDestiny);
-    printArrays(origin, helper, destiny);
+        // We swap values from the towers
+        swap(origin, destiny, sizeOrigin, sizeDestiny);
+        printArrays(origin, helper, destiny);
 
-    // If we have something in left in our helper we move to the helper to make the changes necessary
-    if (deepLevel > 0) {
+        // If we have something in left in our helper we move to the helper to make the changes necessary
         hanoiTower(helper, origin, destiny, sizeHelper, sizeOrigin, sizeDestiny, deepLevel - 1);
     }
 }
@@ -69,19 +71,20 @@ void swap(int origin[], int destiny[], int *sizeOrigin, int *sizeDestiny){
  * Function to print values of the Arrays
  */
 void printArrays(int origin[], int helper[], int destiny[]) {
-    for (int i = 0; i < SIZE; i++) {
+    int i;
+    for ( i = 0; i < SIZE; i++) {
         printf("Origin[%d] = %d\n",i,origin[i]);
     }
 
     printf("\n");
 
-    for (int i = 0; i < SIZE; i++) {
+    for ( i = 0; i < SIZE; i++) {
         printf("Helper[%d] = %d\n",i,helper[i]);
     }
 
     printf("\n");
 
-    for (int i = 0; i < SIZE; i++) {
+    for ( i = 0; i < SIZE; i++) {
         printf("Destiny[%d] = %d\n",i,destiny[i]);
     }
 
@@ -97,10 +100,11 @@ void printArrays(int origin[], int helper[], int destiny[]) {
  */
 void init(int origin[], int helper[], int destiny[]) {
     int i = 0;
+    int aux = SIZE;
     for (i = 0; i <= SIZE; i++) {
-        origin[i]  = i + 1;
+        origin[i]  = aux;
+        aux--;
         helper[i]  = 0;
         destiny[i] = 0;
     }
 }
-
