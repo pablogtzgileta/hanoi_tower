@@ -21,8 +21,6 @@ int main() {
     int sizeOrigin  = SIZE;
     int sizeHelper  = 0;
     int sizeDestiny = 0;
-    int x=0;
-    int y =0;
 
     // Call hanoiTower Algorithm to send the values from tower 1 to tower 3
     hanoiTower(origin, helper, destiny, &sizeOrigin, &sizeHelper, &sizeDestiny, SIZE - 1);
