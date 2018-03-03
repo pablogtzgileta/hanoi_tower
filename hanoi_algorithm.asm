@@ -44,17 +44,14 @@ hanoiTower:
  
         jal hanoiTower
  
-        # We switch the memory address of the towers
-        add $t3, $zero, $s2    
-        add $s2, $zero, $s3
-        add $s3, $zero, $t3
  
         # Swap the values
         addi $s1, $s1, -4
-        sw   $s4, 0($s3)
-        addi $s3,$s3,4
+        sw   $s4, 0($s2)
+        addi $s2,$s2, 4
         sw   $zero, 0($s1)
  
+        
         # We switch the memory address of the towers
         add $t3, $zero, $s2    
         add $s2, $zero, $s1
@@ -72,10 +69,10 @@ hanoiTower:
         addi $sp, $sp,4
         addi $s4, $s4, 1
        
-        jr $ra
+        jr $ra 
 main:
     #Size of the tower
-    addi  $s0, $zero, 3
+    addi  $s0, $zero, 8
  
     #Pointer to the arrays
     add $s1, $zero, 0x10010000    
