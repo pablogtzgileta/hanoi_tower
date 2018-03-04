@@ -1,9 +1,9 @@
-#Luis Fernando Palafox Pucheta & Pablo Martín Gutiérrez Gileta
+	#Luis Fernando Palafox Pucheta & Pablo Martín Gutiérrez Gileta
 .data
  
 .text
  
-# Jump to main
+# Jump to main 
 j main
  
 #  Hanoi Tower Algorithm
@@ -11,7 +11,7 @@ j main
 #  $s4 = Deep Level
 #  $s1 = pointer to array origin
 #  $s2 = pointer to array helper
-#  $s3 = pointer to array destiny
+#  $s3 = pointer to array destiny 
  
 #Function to run the algorithm
 hanoiTower:
@@ -53,10 +53,11 @@ hanoiTower:
  
         
         # We switch the memory address of the towers
-        add $t3, $zero, $s2    
-        add $s2, $zero, $s1
-        add $s1, $zero, $t3
-        add $s4, $s4, -1  
+        add $t0, $zero, $s1    
+        add $s1, $zero, $s3
+      	add $s3,$zero, $s2
+      	add $s2, $zero, $t0
+      	add $s4, $s4, -1  
  
         jal hanoiTower
        
@@ -74,7 +75,7 @@ main:
     #Size of the tower
     addi  $s0, $zero, 8
  
-    #Pointer to the arrays
+    #Pointer to the arrays 
     add $s1, $zero, 0x10010000    
     sll $t7, $s0, 2
     add $s2, $t7, $s1  
